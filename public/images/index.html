@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title>훈기마켓</title>
+    <link href="index.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-area">
+        <!-- 상대참조는 같은 층위에서부터 시작 -->
+        <img src="icons/logo.png" alt="그랩마켓 로고" />
+      </div>
+    </div>
+    <div id="body">
+      <div id="banner">
+        <img
+          src="banners/banner1.png"
+          alt="상단에 그랩마켓 런칭 이벤트라고 쓰여 있고, 하단에는 파인애플 4개가 차례로 놓여 있는 그림이다."
+        />
+      </div>
+      <h1>판매되는 상품들</h1>
+      <div id="product-list">
+        <!-- react에서는 class 대신 className 사용 -->
+        <div className="product-card">
+          <div>
+            <img className="product-img" src="/images/products/basketball1.jpeg"
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+  <!-- javascript -->
+
+  <script>
+    axios
+      .get(
+        "https://5cd009e1-7b37-4fbd-b30f-b570bd97366f.mock.pstmn.io/products"
+      )
+      .then(function (result) {
+        console.log("실행 결과: ", result);
+        console.log("products는 : ", result.data.products);
+        const products = result.data.products;
+        let products_html = "";
+
+        for (var i = 0; i < products.length; i++) {
+          products_html =
+            products_html +
+            '<div class="product-card">' +
+            "<div>" +
+            // 동적인 처리를 위해서 string을 +로 나누기
+            '<img class="product-img" src="' +
+            // 이런 식으로 동적인 부분을 처리
+            products[i].image_url +
+            '" alt="star 브랜드의 농구공이다."/>' +
+            "</div>" +
+            '<div class="product-content">' +
+            '<span class="상품명">' +
+            products[i].name +
+            "</span>" +
+            '<span class="가격">' +
+            products[i].price +
+            " 원" +
+            "</span>" +
+            '<div class="product-seller">' +
+            '<img class="seller-img" src="icons/avatar.png" />' +
+            "<span>" +
+            products[i].seller +
+            "</span>" +
+            " </div>" +
+            "</div>" +
+            "</div>";
+        }
+        // javascript에서는 document 객체를 통해 javascript로 html, css 조작이 가능함
+        // querySelector를 이용해서 html의 특정 id, class를 지정
+        // innerHTML을 통해서 해당 id, class의 html에 접근
+        document.querySelector("#product-list").innerHTML = products_html;
+      })
+      .catch(function (error) {
+        console.error("error 발생 :", error);
+      });
+
+    // 목표 : 위의 배열을 바로 innerHTML로 적용하기
+    // 빈 문자열 정의
+
+    // 위처럼 querySelector와 innerHTML은 string 형태로 삽입
+    // +를 이용해서 여러 string과 dynamic 정보들을 최종적으로 하나의 string 형태로 만들기
+  </script>
+</html>

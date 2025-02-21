@@ -23,7 +23,9 @@ body {
 }
 
 #body {
-  height: 1000px;
+  /* vh는 윈도우 높이 전체를 기준으로 백분율 */
+  /* vw는 윈도우 화면 넓이 전체를 기준으로 백분율 */
+  height: 100vh;
   width: 1024px;
   /* 가운데정렬 (flex 이용하지 않고도) */
   /* margin은 원래 인자 4개필요 (시계방향)
@@ -98,4 +100,12 @@ body {
   display: flex;
   align-items: center;
   margin-top: 12px;
+}
+
+/* a Tag (Link tag)는 안의 내용물의 색깔을 바꾸고 밑줄을 그음 그걸 수정해주기 */
+.product-link {
+  /* color를 원래대로 */
+  color: inherit;
+  /* 밑줄 없애기 */
+  text-decoration: none;
 }

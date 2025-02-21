@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import axios from "axios";
+import { BrowserRouter, Link } from "react-router-dom";
 
 function MainPage() {
   const [productt, setProducts] = React.useState([]);
@@ -45,24 +46,30 @@ function MainPage() {
           {productt.map(function (value, index) {
             return (
               <div className="product-card">
-                <div>
-                  <img
-                    className="product-img"
-                    // value.image_url로 이미지 주소로 접근. 근데 mock 서버에서 정의한 url 주소가 /images~~ 로 시작하지 않는 문제가 있음
-                    // 그래서 JSX와 Template Literal을 이용해서 string 형태로 병합.
-                    src={`/images/${value.image_url}`}
-                  />
-                </div>
-                <div className="product-content">
-                  {/* 위의 value를 이용하는 방식과는 다르게, 이번에는 productt 배열에서 index를 이용해서 뽑아냄. */}
-                  {/* 이때도 항상 HTML안에 javascript 문법을 넣기 위해서는 JSX 생각! */}
-                  <span className="상품명">{productt[index].name}</span>
-                  <span className="가격">{value.price} 원</span>
-                  <div className="product-seller">
-                    <img className="seller-img" src="images/icons/avatar.png" />
-                    <span>{productt[index].seller}</span>
+                {/* 이렇게 Link 태그로 감싸면, 그 태그들이 링크 역할을 하게 된다. 이떄 HTML에는 a Tag로 변환됨. */}
+                <Link className="product-link" to={`/product/${index}`}>
+                  <div>
+                    <img
+                      className="product-img"
+                      // value.image_url로 이미지 주소로 접근. 근데 mock 서버에서 정의한 url 주소가 /images~~ 로 시작하지 않는 문제가 있음
+                      // 그래서 JSX와 Template Literal을 이용해서 string 형태로 병합.
+                      src={`/images/${value.image_url}`}
+                    />
                   </div>
-                </div>
+                  <div className="product-content">
+                    {/* 위의 value를 이용하는 방식과는 다르게, 이번에는 productt 배열에서 index를 이용해서 뽑아냄. */}
+                    {/* 이때도 항상 HTML안에 javascript 문법을 넣기 위해서는 JSX 생각! */}
+                    <span className="상품명">{productt[index].name}</span>
+                    <span className="가격">{value.price} 원</span>
+                    <div className="product-seller">
+                      <img
+                        className="seller-img"
+                        src="images/icons/avatar.png"
+                      />
+                      <span>{value.seller}</span>
+                    </div>
+                  </div>
+                </Link>
               </div>
             );
           })}

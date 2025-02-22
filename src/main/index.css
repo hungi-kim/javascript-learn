@@ -4,42 +4,6 @@ body {
   padding: 0;
 }
 
-/* *태그는 모든 태그를 의미함 */
-* {
-  margin: 0;
-  padding: 0;
-}
-
-#header {
-  height: 64px;
-  border-bottom: 1px solid gray;
-}
-
-#header-area {
-  /* flex 기억 */
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-#body {
-  /* vh는 윈도우 높이 전체를 기준으로 백분율 */
-  /* vw는 윈도우 화면 넓이 전체를 기준으로 백분율 */
-  height: 100vh;
-  width: 1024px;
-  /* 가운데정렬 (flex 이용하지 않고도) */
-  /* margin은 원래 인자 4개필요 (시계방향)
-  근데 두개만 쓰면 상하 좌우 임. auto는 margin값을 부모기준 같게 해주는 것 */
-  margin: 0 auto;
-  /* body tag와 footer tag를 분리 */
-  padding-bottom: 12px;
-}
-
-#footer {
-  height: 200px;
-  background-color: rgb(230, 230, 230);
-}
-
 #banner {
   height: 300px;
 }
@@ -47,12 +11,7 @@ body {
 #banner > img {
   width: 100%;
 }
-#header-area > img {
-  /* 이미지 비율에 맞게 길이, 높이 설정 */
-  /* 근데 보통 width를 설정하면, 비율에 맞게 height가 정해짐 */
-  width: 129px;
-  height: 36px;
-}
+
 #body > h1 {
   margin-top: 16px;
   margin-bottom: 12px;

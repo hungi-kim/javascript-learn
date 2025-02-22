@@ -1,0 +1,54 @@
+/* 주의!! #하고 뒤에 id가 올때 띄우면 안 됨. */
+/* 복습 : display:flex를 이용해서 부모안의 자식들을 가로정렬 */
+/* align-items는 display 방향의 수직방향의 정렬 */
+/* justify-concetn는 display 방향의 정렬 */
+#image-box {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#image-box > img {
+  height: 100%;
+}
+
+#profile-box {
+  padding: 16px;
+  margin-top: 8px;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+#profile-box > img {
+  height: 50px;
+}
+
+#profile-box > span {
+  font-size: 16px;
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+#contents-box {
+  padding: 16px;
+}
+
+#name {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#price {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#description {
+  margin-top: 10px;
+}
+
+#createdAt {
+  font-size: 10px;
+}
